@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Bubbler+One|Open+Sans');
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  background: rgb(20,20,20);
+  margin: 0;
+  color: white;
+}
+h1 {
+  font-family: 'Bubbler One', sans-serif;
+  margin: 0;
+}
+h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
+  margin: 0;
+}
+header {
+  padding: 20px;
+  z-index: 2;
+}
+#mousetrap-demo-container {
+  position: relative;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+  width: 800px;
+  height: 800px;
+  border: 2px solid rgb(50,50,50);
+  background: rgb(40,40,40);
+}
+footer {
+  position: fixed;
+  z-index: 2;
+
+}
