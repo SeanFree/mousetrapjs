@@ -24,7 +24,7 @@ class MouseTrap {
     }
   }
   handler(e) {
-    this.hover = (e.type === 'mouseenter' || e.type === 'mouseover' || e.type === 'mousemove');
+    this.hover = (e.type === 'mousedown' || e.type === 'mouseenter' || e.type === 'mouseover' || e.type === 'mousemove');
     this.mousedown = (
       e.type === 'mousedown' ? true :
       e.type === 'mouseup' ? false :
