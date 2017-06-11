@@ -55,7 +55,7 @@ var MouseTrap = function () {
     key: 'handler',
     value: function handler(e) {
       this.hover = e.type === 'mouseenter' || e.type === 'mouseover' || e.type === 'mousemove';
-      console.log(this.hover);
+      this.mousedown = e.type === 'mousedown' ? true : e.type === 'mouseup' ? false : this.mousedown;
       this.position.last.x = this.position.current.x;
       this.position.last.y = this.position.current.y;
       this.position.current.x = e.clientX;
