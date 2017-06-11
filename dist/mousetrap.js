@@ -54,8 +54,8 @@ var MouseTrap = function () {
   }, {
     key: 'handler',
     value: function handler(e) {
-      this.hover = e.type === 'mousedown' || e.type === 'mouseenter' || e.type === 'mouseover' || e.type === 'mousemove';
-      this.mousedown = e.type === 'mousedown' ? true : e.type === 'mouseup' ? false : this.mousedown;
+      this.hover = e.type === 'mousedown' || e.type === 'mouseup' || e.type === 'mouseenter' || e.type === 'mouseover' || e.type === 'mousemove';
+      this.mousedown = e.type === 'mousedown' ? true : e.type === 'mouseup' || e.type === 'mouseleave' || e.type === 'mouseout' ? false : this.mousedown;
       this.position.last.x = this.position.current.x;
       this.position.last.y = this.position.current.y;
       this.position.current.x = e.clientX;
@@ -66,13 +66,13 @@ var MouseTrap = function () {
     key: 'initDebugConsole',
     value: function initDebugConsole() {
       this.debugConsole = document.createElement('div');
-      this.debugConsole.style = '\n      position: fixed;\n      z-index: 2;\n      right: 20px;\n      top: 20px;\n      background: rgba(80,80,80,0.4);\n      color: white;\n      font-family: sans-serif;\n    ';
+      this.debugConsole.style = '\n      position: fixed;\n      z-index: 2;\n      right: 20px;\n      top: 20px;\n      padding: 10px;\n      background: rgba(80,80,80,0.4);\n      color: white;\n      font-family: sans-serif;\n    ';
       document.body.appendChild(this.debugConsole);
     }
   }, {
     key: 'updateDebugConsole',
     value: function updateDebugConsole() {
-      this.debugConsole.innerHTML = '\n      <div style="padding: 10px" id="position-output">\n        <span>Current Position</span><br/>\n        <span>x: ' + this.position.current.x + '</span></br>\n        <span>y: ' + this.position.current.y + '</span></br>\n      </div>\n      <div style="padding: 10px">Mouse Over: ' + this.hover + '</div>\n    ';
+      this.debugConsole.innerHTML = '\n      <div style="padding: 10px" id="position-output">\n        <span>Current Position</span><br/>\n        <span style="padding: 5px">x: ' + this.position.current.x + '</span></br>\n        <span style="padding: 5px">y: ' + this.position.current.y + '</span></br>\n      </div>\n      <div style="padding: 10px">Mouse Over: ' + this.hover + '</div>\n      <div style="padding: 10px">Mouse Down: ' + this.mousedown + '</div>\n    ';
     }
   }]);
 

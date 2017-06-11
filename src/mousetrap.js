@@ -24,10 +24,10 @@ class MouseTrap {
     }
   }
   handler(e) {
-    this.hover = (e.type === 'mousedown' || e.type === 'mouseenter' || e.type === 'mouseover' || e.type === 'mousemove');
+    this.hover = (e.type === 'mousedown' || e.type === 'mouseup' || e.type === 'mouseenter' || e.type === 'mouseover' || e.type === 'mousemove');
     this.mousedown = (
       e.type === 'mousedown' ? true :
-      e.type === 'mouseup' ? false :
+      e.type === 'mouseup' || e.type === 'mouseleave' || e.type === 'mouseout' ? false :
       this.mousedown
     );
     this.position.last.x = this.position.current.x;
@@ -44,6 +44,7 @@ class MouseTrap {
       z-index: 2;
       right: 20px;
       top: 20px;
+      padding: 10px;
       background: rgba(80,80,80,0.4);
       color: white;
       font-family: sans-serif;
@@ -54,10 +55,11 @@ class MouseTrap {
     this.debugConsole.innerHTML = `
       <div style="padding: 10px" id="position-output">
         <span>Current Position</span><br/>
-        <span>x: ${this.position.current.x}</span></br>
-        <span>y: ${this.position.current.y}</span></br>
+        <span style="padding: 5px">x: ${this.position.current.x}</span></br>
+        <span style="padding: 5px">y: ${this.position.current.y}</span></br>
       </div>
       <div style="padding: 10px">Mouse Over: ${this.hover}</div>
+      <div style="padding: 10px">Mouse Down: ${this.mousedown}</div>
     `;
   }
 }
