@@ -8,7 +8,11 @@ var MouseTrap = function () {
   function MouseTrap(element, debugEnabled) {
     _classCallCheck(this, MouseTrap);
 
-    if (!element || !(element instanceof HTMLElement)) this.element = window;else this.element = element;
+    if (!element || !element.tagName) {
+      this.element = window;
+    } else {
+      this.element = element;
+    }
     this.position = {
       current: { x: 0, y: 0 },
       last: { x: 0, y: 0 }
@@ -72,7 +76,7 @@ var MouseTrap = function () {
   }, {
     key: 'updateDebugConsole',
     value: function updateDebugConsole() {
-      this.debugConsole.innerHTML = '\n      <div style="padding: 10px" id="position-output">\n        <span>Current Position</span><br/>\n        <span style="padding: 5px">x: ' + this.position.current.x + '</span></br>\n        <span style="padding: 5px">y: ' + this.position.current.y + '</span></br>\n      </div>\n      <div style="padding: 10px">Mouse Over: ' + this.hover + '</div>\n      <div style="padding: 10px">Mouse Down: ' + this.mousedown + '</div>\n    ';
+      this.debugConsole.innerHTML = '\n      <div style="padding: 10px" id="current-position-output">\n        <span>Current Position</span><br/>\n        <span style="padding: 5px">x: ' + this.position.current.x + '</span></br>\n        <span style="padding: 5px">y: ' + this.position.current.y + '</span></br>\n      </div>\n      <div style="padding: 10px" id="last-position-output">\n        <span>Last Position</span><br/>\n        <span style="padding: 5px">x: ' + this.position.last.x + '</span></br>\n        <span style="padding: 5px">y: ' + this.position.last.y + '</span></br>\n      </div>\n      <div style="padding: 10px">Mouse Over: ' + this.hover + '</div>\n      <div style="padding: 10px">Mouse Down: ' + this.mousedown + '</div>\n    ';
     }
   }]);
 

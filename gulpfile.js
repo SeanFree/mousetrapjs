@@ -3,7 +3,7 @@ var babel = require('gulp-babel');
 var minify = require('gulp-minify');
 
 gulp.task('compile', function() {
-  return gulp.src('src/*.js')
+  return gulp.src('src/*.es6')
     .pipe(babel({
       presets: ['es2015']
     }))

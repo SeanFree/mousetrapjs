@@ -1,9 +1,10 @@
 class MouseTrap {
   constructor(element, debugEnabled) {
-    if (!element || !(element instanceof HTMLElement))
+    if (!element || !(element.tagName)) {
       this.element = window;
-    else
+    } else {
       this.element = element;
+    }
     this.position = {
       current: { x: 0, y: 0 },
       last: { x: 0, y: 0 }
@@ -53,10 +54,15 @@ class MouseTrap {
   }
   updateDebugConsole() {
     this.debugConsole.innerHTML = `
-      <div style="padding: 10px" id="position-output">
+      <div style="padding: 10px" id="current-position-output">
         <span>Current Position</span><br/>
         <span style="padding: 5px">x: ${this.position.current.x}</span></br>
         <span style="padding: 5px">y: ${this.position.current.y}</span></br>
+      </div>
+      <div style="padding: 10px" id="last-position-output">
+        <span>Last Position</span><br/>
+        <span style="padding: 5px">x: ${this.position.last.x}</span></br>
+        <span style="padding: 5px">y: ${this.position.last.y}</span></br>
       </div>
       <div style="padding: 10px">Mouse Over: ${this.hover}</div>
       <div style="padding: 10px">Mouse Down: ${this.mousedown}</div>
